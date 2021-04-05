@@ -20,11 +20,14 @@ mixin GqlQuery {
   ''';
 
   static String vehicalsQuery = '''
-  query (\$id: String!){
+  query (\$id: ID!){
     launchpad(id: \$id) {
       vehicles_launched {
+      name
       active
       boosters
+      id
+      success_rate_pct
       cost_per_launch
       country
       description

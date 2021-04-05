@@ -1,6 +1,14 @@
-part of 'vehicals_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-@freezed
-abstract class VehicalsEvent with _$VehicalsEvent {
-  const factory VehicalsEvent.loading() = _Loading;
+abstract class VehicalsEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class VehicalsFetch extends VehicalsEvent {
+  final String launchPadID;
+
+  VehicalsFetch({this.launchPadID});
+  @override
+  List<Object> get props => [launchPadID];
 }

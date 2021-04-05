@@ -27,8 +27,8 @@ class VehicalsRemoteDataSource implements IVehicalsRemoteDataSource {
         return [];
       }
       return result.data['launchpad']['vehicles_launched']
-          .map((e) => LaunchPadModel.fromJson(e))
-          .cast<LaunchPadModel>()
+          .map((e) => VehicalModel.fromJson(e))
+          .cast<VehicalModel>()
           .toList();
     } on Exception catch (exception) {
       print(exception);

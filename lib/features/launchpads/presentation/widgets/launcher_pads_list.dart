@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:leanix_task/features/launchpads/presentation/bloc/launchpads/launchpads_state.dart';
+import 'package:leanix_task/features/launchpads/presentation/pages/launchpad_details.dart';
 import 'package:pagination_view/widgets/bottom_loader.dart';
 
-import '../../../../core/injection/injection.dart';
 import '../../domain/entities/launchpad.dart';
 import '../bloc/launchpads/launchpads_bloc.dart';
 
@@ -17,7 +17,7 @@ class LaunchPadsList extends StatefulWidget {
 class _LaunchPadsListState extends State<LaunchPadsList> {
   LaunchpadsBloc _bloc;
   final _scrollController = ScrollController();
-  final _scrollThreshold = 200.0;
+  final _scrollThreshold = 100.0;
 
   @override
   void initState() {
@@ -65,7 +65,7 @@ class _LaunchPadsListState extends State<LaunchPadsList> {
       } else if (state is LauchpadsSuccess) {
         if (state.launchPads.isEmpty) {
           return Center(
-            child: Text('no posts'),
+            child: Text('No Launchpads available'),
           );
         }
         return ListView.builder(
@@ -95,15 +95,26 @@ class LaunchPadWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text(
-        '${launchPad.id}',
-        style: TextStyle(fontSize: 10.0),
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return LaunchPadDetails(
+            launchpadID: launchPad.id,
+            launchpadName: launchPad.name,
+          );
+        }),
       ),
-      title: Text(launchPad.name),
-      isThreeLine: true,
-      subtitle: Text(launchPad.location.name),
-      dense: true,
+      child: ListTile(
+        leading: Text(
+          '${launchPad.id}',
+          style: TextStyle(fontSize: 10.0),
+        ),
+        title: Text(launchPad.name),
+        isThreeLine: true,
+        subtitle: Text(launchPad.location.name),
+        dense: true,
+      ),
     );
   }
 }

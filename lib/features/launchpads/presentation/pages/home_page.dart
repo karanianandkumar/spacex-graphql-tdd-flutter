@@ -9,7 +9,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
+      appBar: AppBar(
+        title: Text("SpaceX Launchpads"),
+        centerTitle: true,
+      ),
       body: LaunchPadsList(),
     );
   }

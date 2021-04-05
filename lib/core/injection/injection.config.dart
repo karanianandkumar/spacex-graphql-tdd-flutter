@@ -25,13 +25,15 @@ import '../../features/launchpads/domain/repositories/i_launchpads_repository.da
 import '../../features/launchpads/domain/repositories/i_vehicals_repository.dart'
     as _i9;
 import '../../features/launchpads/domain/usecases/get_launchpads_usecase.dart'
-    as _i15;
+    as _i16;
 import '../../features/launchpads/domain/usecases/get_vehicals_usecase.dart'
     as _i12;
 import '../../features/launchpads/presentation/bloc/launchpads/launchpads_bloc.dart'
-    as _i16;
+    as _i17;
+import '../../features/launchpads/presentation/bloc/vehicals/vehicals_bloc.dart'
+    as _i15;
 import '../network/network_info.dart' as _i11;
-import 'register_module.dart' as _i17; // ignore_for_file: unnecessary_lambdas
+import 'register_module.dart' as _i18; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -60,11 +62,13 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
       get<_i11.NetworkInfo>(),
       get<_i7.ILaunchPadsRemoteDataSource>(),
       get<_i6.ILaunchPadsLocalDataSource>()));
-  gh.lazySingleton<_i15.GetLaunchPadsUseCase>(
-      () => _i15.GetLaunchPadsUseCase(get<_i13.ILanuchPadsRepository>()));
-  gh.factory<_i16.LaunchpadsBloc>(
-      () => _i16.LaunchpadsBloc(get<_i15.GetLaunchPadsUseCase>()));
+  gh.factory<_i15.VehicalsBloc>(
+      () => _i15.VehicalsBloc(get<_i12.GetVehicalsUseCase>()));
+  gh.lazySingleton<_i16.GetLaunchPadsUseCase>(
+      () => _i16.GetLaunchPadsUseCase(get<_i13.ILanuchPadsRepository>()));
+  gh.factory<_i17.LaunchpadsBloc>(
+      () => _i17.LaunchpadsBloc(get<_i16.GetLaunchPadsUseCase>()));
   return get;
 }
 
-class _$RegisterModule extends _i17.RegisterModule {}
+class _$RegisterModule extends _i18.RegisterModule {}
