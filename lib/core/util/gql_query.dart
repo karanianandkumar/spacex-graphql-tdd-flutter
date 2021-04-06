@@ -25,13 +25,11 @@ mixin GqlQuery {
       vehicles_launched {
       name
       active
-      boosters
       id
       success_rate_pct
-      cost_per_launch
       country
+      company
       description
-      stages
     }
     }
   }

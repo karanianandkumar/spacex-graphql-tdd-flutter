@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:leanix_task/core/injection/injection.dart';
-import 'package:leanix_task/features/launchpads/domain/entities/vehical.dart';
-import 'package:leanix_task/features/launchpads/presentation/bloc/vehicals/vehicals_bloc.dart';
-import 'package:leanix_task/features/launchpads/presentation/bloc/vehicals/vehicals_state.dart';
+
+import '../../../../core/injection/injection.dart';
+import '../bloc/vehicals/vehicals_bloc.dart';
+import '../bloc/vehicals/vehicals_state.dart';
+import '../widgets/vehical_item.dart';
 
 class LaunchPadDetails extends StatefulWidget {
   final String launchpadID;
@@ -54,32 +55,21 @@ class _LaunchPadDetailsState extends State<LaunchPadDetails> {
                   itemCount: state.vehicals.length);
             } else {
               return Center(
-                child: CircularProgressIndicator(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text("Loading Vehicals Information..")
+                  ],
+                ),
               );
             }
           },
         ),
       ),
-    );
-  }
-}
-
-class VehicalWidget extends StatelessWidget {
-  final Vehical vehical;
-
-  const VehicalWidget({Key key, @required this.vehical}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: Text(
-        '${vehical.id}',
-        style: TextStyle(fontSize: 10.0),
-      ),
-      title: Text(vehical.name),
-      isThreeLine: true,
-      subtitle: Text(vehical.country),
-      dense: true,
     );
   }
 }

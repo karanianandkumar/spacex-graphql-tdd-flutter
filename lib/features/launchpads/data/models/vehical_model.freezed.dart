@@ -21,11 +21,17 @@ class _$VehicalModelTearOff {
       {@required String id,
       @required String country,
       @required String name,
+      @required bool active,
+      @required String description,
+      @required String company,
       @required @JsonKey(name: 'success_rate_pct') int successRatePercent}) {
     return _VehicalModel(
       id: id,
       country: country,
       name: name,
+      active: active,
+      description: description,
+      company: company,
       successRatePercent: successRatePercent,
     );
   }
@@ -45,6 +51,9 @@ mixin _$VehicalModel {
   String get id;
   String get country;
   String get name;
+  bool get active;
+  String get description;
+  String get company;
   @JsonKey(name: 'success_rate_pct')
   int get successRatePercent;
 
@@ -62,6 +71,9 @@ abstract class $VehicalModelCopyWith<$Res> {
       {String id,
       String country,
       String name,
+      bool active,
+      String description,
+      String company,
       @JsonKey(name: 'success_rate_pct') int successRatePercent});
 }
 
@@ -78,12 +90,19 @@ class _$VehicalModelCopyWithImpl<$Res> implements $VehicalModelCopyWith<$Res> {
     Object id = freezed,
     Object country = freezed,
     Object name = freezed,
+    Object active = freezed,
+    Object description = freezed,
+    Object company = freezed,
     Object successRatePercent = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       country: country == freezed ? _value.country : country as String,
       name: name == freezed ? _value.name : name as String,
+      active: active == freezed ? _value.active : active as bool,
+      description:
+          description == freezed ? _value.description : description as String,
+      company: company == freezed ? _value.company : company as String,
       successRatePercent: successRatePercent == freezed
           ? _value.successRatePercent
           : successRatePercent as int,
@@ -102,6 +121,9 @@ abstract class _$VehicalModelCopyWith<$Res>
       {String id,
       String country,
       String name,
+      bool active,
+      String description,
+      String company,
       @JsonKey(name: 'success_rate_pct') int successRatePercent});
 }
 
@@ -120,12 +142,19 @@ class __$VehicalModelCopyWithImpl<$Res> extends _$VehicalModelCopyWithImpl<$Res>
     Object id = freezed,
     Object country = freezed,
     Object name = freezed,
+    Object active = freezed,
+    Object description = freezed,
+    Object company = freezed,
     Object successRatePercent = freezed,
   }) {
     return _then(_VehicalModel(
       id: id == freezed ? _value.id : id as String,
       country: country == freezed ? _value.country : country as String,
       name: name == freezed ? _value.name : name as String,
+      active: active == freezed ? _value.active : active as bool,
+      description:
+          description == freezed ? _value.description : description as String,
+      company: company == freezed ? _value.company : company as String,
       successRatePercent: successRatePercent == freezed
           ? _value.successRatePercent
           : successRatePercent as int,
@@ -141,10 +170,16 @@ class _$_VehicalModel implements _VehicalModel {
       {@required this.id,
       @required this.country,
       @required this.name,
+      @required this.active,
+      @required this.description,
+      @required this.company,
       @required @JsonKey(name: 'success_rate_pct') this.successRatePercent})
       : assert(id != null),
         assert(country != null),
         assert(name != null),
+        assert(active != null),
+        assert(description != null),
+        assert(company != null),
         assert(successRatePercent != null);
 
   factory _$_VehicalModel.fromJson(Map<String, dynamic> json) =>
@@ -157,12 +192,18 @@ class _$_VehicalModel implements _VehicalModel {
   @override
   final String name;
   @override
+  final bool active;
+  @override
+  final String description;
+  @override
+  final String company;
+  @override
   @JsonKey(name: 'success_rate_pct')
   final int successRatePercent;
 
   @override
   String toString() {
-    return 'VehicalModel(id: $id, country: $country, name: $name, successRatePercent: $successRatePercent)';
+    return 'VehicalModel(id: $id, country: $country, name: $name, active: $active, description: $description, company: $company, successRatePercent: $successRatePercent)';
   }
 
   @override
@@ -176,6 +217,14 @@ class _$_VehicalModel implements _VehicalModel {
                     .equals(other.country, country)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.active, active) ||
+                const DeepCollectionEquality().equals(other.active, active)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.company, company) ||
+                const DeepCollectionEquality()
+                    .equals(other.company, company)) &&
             (identical(other.successRatePercent, successRatePercent) ||
                 const DeepCollectionEquality()
                     .equals(other.successRatePercent, successRatePercent)));
@@ -187,6 +236,9 @@ class _$_VehicalModel implements _VehicalModel {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(country) ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(active) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(company) ^
       const DeepCollectionEquality().hash(successRatePercent);
 
   @JsonKey(ignore: true)
@@ -209,6 +261,12 @@ abstract class _VehicalModel implements VehicalModel {
       @required
           String name,
       @required
+          bool active,
+      @required
+          String description,
+      @required
+          String company,
+      @required
       @JsonKey(name: 'success_rate_pct')
           int successRatePercent}) = _$_VehicalModel;
 
@@ -221,6 +279,12 @@ abstract class _VehicalModel implements VehicalModel {
   String get country;
   @override
   String get name;
+  @override
+  bool get active;
+  @override
+  String get description;
+  @override
+  String get company;
   @override
   @JsonKey(name: 'success_rate_pct')
   int get successRatePercent;

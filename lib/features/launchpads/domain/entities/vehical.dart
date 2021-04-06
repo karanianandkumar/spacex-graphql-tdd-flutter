@@ -8,5 +8,8 @@ abstract class Vehical with _$Vehical {
       {@required String id,
       @required String country,
       @required String name,
+      @required bool active,
+      @required String description,
+      @required String company,
       @required int successRatePercent}) = _Vehical;
 }

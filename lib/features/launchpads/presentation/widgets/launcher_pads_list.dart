@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:leanix_task/features/launchpads/presentation/bloc/launchpads/launchpads_state.dart';
-import 'package:leanix_task/features/launchpads/presentation/pages/launchpad_details.dart';
 import 'package:pagination_view/widgets/bottom_loader.dart';
 
-import '../../domain/entities/launchpad.dart';
 import '../bloc/launchpads/launchpads_bloc.dart';
+import '../bloc/launchpads/launchpads_state.dart';
+import 'launchpad_item.dart';
 
 class LaunchPadsList extends StatefulWidget {
   const LaunchPadsList({Key key}) : super(key: key);
@@ -81,40 +80,18 @@ class _LaunchPadsListState extends State<LaunchPadsList> {
         );
       } else {
         return Center(
-          child: CircularProgressIndicator(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(
+                height: 16,
+              ),
+              Text("Loading SpaceX LaunchPads..")
+            ],
+          ),
         );
       }
     });
-  }
-}
-
-class LaunchPadWidget extends StatelessWidget {
-  final LaunchPad launchPad;
-
-  const LaunchPadWidget({Key key, @required this.launchPad}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) {
-          return LaunchPadDetails(
-            launchpadID: launchPad.id,
-            launchpadName: launchPad.name,
-          );
-        }),
-      ),
-      child: ListTile(
-        leading: Text(
-          '${launchPad.id}',
-          style: TextStyle(fontSize: 10.0),
-        ),
-        title: Text(launchPad.name),
-        isThreeLine: true,
-        subtitle: Text(launchPad.location.name),
-        dense: true,
-      ),
-    );
   }
 }

@@ -16,6 +16,12 @@ abstract class VehicalModel with _$VehicalModel {
       @required
           String name,
       @required
+          bool active,
+      @required
+          String description,
+      @required
+          String company,
+      @required
       @JsonKey(name: 'success_rate_pct')
           int successRatePercent}) = _VehicalModel;
   factory VehicalModel.fromJson(Map<String, dynamic> json) =>
@@ -25,14 +31,19 @@ abstract class VehicalModel with _$VehicalModel {
       id: entity.id,
       name: entity.name,
       country: entity.country,
-      successRatePercent: entity.successRatePercent);
+      successRatePercent: entity.successRatePercent,
+      active: entity.active,
+      description: entity.description,
+      company: entity.company);
 }
 
 extension VehicalModelX on VehicalModel {
   Vehical toEntity() => Vehical(
-        id: id,
-        name: name,
-        country: country,
-        successRatePercent: successRatePercent,
-      );
+      id: id,
+      name: name,
+      country: country,
+      successRatePercent: successRatePercent,
+      active: active,
+      description: description,
+      company: company);
 }

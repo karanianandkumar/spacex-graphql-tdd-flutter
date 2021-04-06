@@ -29,9 +29,6 @@ dependencies:
   # State management
   flutter_bloc: ^7.0.0
 
-  # Caching
-  hive: ^1.4.4+1
-
   # Misc
   dartz: ^0.9.2
   rxdart: ^0.24.1

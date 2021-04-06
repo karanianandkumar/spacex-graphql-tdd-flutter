@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/app_bar.dart';
 import '../widgets/launcher_pads_list.dart';
 
 class HomePage extends StatelessWidget {
